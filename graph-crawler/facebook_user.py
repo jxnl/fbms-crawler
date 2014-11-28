@@ -6,8 +6,6 @@ marksweep.user
 
 This module contains User() which models the basic actions a user can go over the Facebook Graph API.
 
-:author: Jason Liu (University of Waterloo)
-
 In the future we will need to be able to handle connection pools if we want to crawl more intensely
 While not all endpoints have been implemented, a user instance can get all groups, and all inbox messages
 from the Graph API along with posting a status to their news feed.
