@@ -178,7 +178,7 @@ class GroupCrawlerBFS(AbstractBaseCrawler):
         while not self.group_queue.empty():
             group = self.group_queue.get()
             self.LOG.info("[QUEUEING POST NODES] {}".format(datetime.datetime.now()))
-            for post in group.posts_(limit=lim, all=self.get_all_posts):
+            for post in group.posts_(limit=lim, all=True):
                 self.posts_queue.put(post)
 
         self.LOG.info("[VISITING POST NODES] {}".format(datetime.datetime.now()))
@@ -197,3 +197,8 @@ class GroupCrawlerBFS(AbstractBaseCrawler):
             for like in post.likes_(limit=500, all=True):
                 self._crawl_post_likes(like, current_group_id, current_post_id)
         self.LOG.info("[JOB COMPLETED] {}".format(datetime.datetime.now()))
+
+
+if __name__ == "__main__":
+    crawlerz = GroupCrawlerBFS()
+    crawlerz.crawl(lim=100)

@@ -28,7 +28,7 @@ class User(object):
     @classmethod
     def graph(cls):
         cls.call_counter += 1
-        if cls.call_counter > 600 and cls._time_since_last_nap() > 600:
+        if cls.call_counter > 600 or cls._time_since_last_nap() > 600:
             sleep(60)
             User.timer = time()
             cls.call_counter = 0
